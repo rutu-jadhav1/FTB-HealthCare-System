@@ -8,6 +8,7 @@ const userSchema = new Schema({
     mobile : {
         type : Number,
         required : true,
+        unique : true,
     },
     email : {
         type : String,
@@ -25,7 +26,7 @@ const userSchema = new Schema({
     },
     gender : {
         type : String,
-        required : true,
+        enum : ['male','female','other'],
     },
     role : {
         type : String,

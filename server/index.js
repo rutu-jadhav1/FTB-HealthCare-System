@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from  'dotenv';
+import { postLogin, postSignup } from './controllers/auth.js';
 dotenv.config();
 
 const app = express();
@@ -18,6 +19,8 @@ app.use(cors());
     }
 })();
 
+app.post('/signup', postSignup)
+app.post('/login', postLogin)
 
 app.listen(port , ()=> {
     console.log('Server started on port : ' + port)
