@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from  'dotenv';
 import { postLogin, postSignup } from './controllers/auth.js';
+import {postDoctor, getDoctor, getDoctorById, updateDoctor, deleteDoctor} from './controllers/doctor.js';
 dotenv.config();
 
 const app = express();
@@ -21,6 +22,12 @@ app.use(cors());
 
 app.post('/signup', postSignup)
 app.post('/login', postLogin)
+
+app.post('/doctors', postDoctor)
+app.get('/doctors', getDoctor)
+app.get('/doctors/:id', getDoctorById)
+app.put('/doctors/:id', updateDoctor)
+app.delete('/doctors/:id', deleteDoctor)
 
 app.listen(port , ()=> {
     console.log('Server started on port : ' + port)
